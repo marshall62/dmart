@@ -1,11 +1,11 @@
 <div id="imgLarge" class="image-with-text">
-  <img *ngIf="image" (click)="handleClick()"
+  <img *ngIf="artwork" (click)="handleClick()"
   [src]="imageURL()"/>
   <p class="focus-image-caption">
-    <span *ngIf="image?.title">{{image.title}}</span>
-    <span *ngIf="image?.media">,&nbsp;{{image.media}}</span>
-    <span *ngIf="image?.dimensions">,&nbsp;{{image.dimensions}}</span>
-    <span *ngIf="image?.date">,&nbsp;{{image.date}}</span>
-    <span *ngIf="image?.price">,&nbsp;{{image.price}}</span>
+    <span *ngIf="artwork?.title">{{artwork.title}}</span>
+    <span *ngIf="artwork?.media">,&nbsp;{{artwork.media}}</span>
+    <span *ngIf="artwork?.dimensions">,&nbsp;{{artwork.dimensions}}</span>
+    <span *ngIf="artwork?.date">,&nbsp;{{artwork.date}}</span>
+    <span *ngIf="artwork?.price">,&nbsp;{{artwork.price}}</span>
   </p>
 </div>

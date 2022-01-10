@@ -44,6 +44,8 @@ def rename_images (source_dir, target_dir=None):
         new_name = rename_file(filename, suffix)
         print(f'renaming {filename} to {os.path.join(target_dir,new_name)}')
         shutil.copy(os.path.join(source_dir,filename), os.path.join(target_dir,new_name))
+        if target_dir == source_dir:
+          os.remove(os.path.join(source_dir,filename))
   print('done')
   print('*: files that filled gaps (and may already have a Mongo artwork record)')
 
@@ -85,5 +87,5 @@ def process_suffixes (image_filenames):
 # N.B. This will work within one directory preserving files that have already been converted
 # and renaming those that haven't
 if __name__ == '__main__':
-  # rename_images("/Users/marshald/dev/personal/dmart/images", "/Users/marshald/dev/personal/dmart/images")
-  rename_images("/Users/marshald/dev/personal/dmart/images")
+  rename_images("/Users/marshald/dev/personal/dmart/images", "/Users/marshald/dev/personal/dmart/images")
+  # rename_images("/Users/marshald/dev/personal/dmart/images")

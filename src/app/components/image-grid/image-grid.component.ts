@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { globalConfig } from 'src/app/config';
+import { Artwork } from 'src/app/models/artwork';
 import { ArtworkService } from 'src/app/services/artwork.service';
 
 @Component({
@@ -13,28 +14,31 @@ export class ImageGridComponent implements OnInit {
   constructor(private artworkSvc: ArtworkService) { }
 
   ngOnInit(): void {
-    this.artworkSvc.fetchExemplarArtworks().subscribe(images => {
-      this.exemplarTable = this.tablify(images, 2)
+    this.artworkSvc.fetchExemplarArtworks().subscribe(artworks => {
+      this.exemplarTable = this.tablify(artworks, 2)
     });
   }
 
-  tablify(imageList, nCols): any[] {
+  tablify(artworks, nCols): any[] {
     let table = [], row ;
-    for (let index=0; index<imageList.length; index++) {
+    for (let index=0; index<artworks.length; index++) {
       if (index % nCols == 0) {
         if (index > 0)
           table.push(row);
         row = [];
       }
-      row.push(imageList[index]);
+      row.push(artworks[index]);
 
     }
     table.push(row);
     return table;
   }
 
-  imageURL (image) {
-    return globalConfig.imageRootURI + "/" + image.url;
+  imageURL (artwork: Artwork) {
+    if (artwork.number)
+      return globalConfig.imageRootURI + "/" + globalConfig.filename + artwork.number + '.jpg';
+    else
+    return globalConfig.imageRootURI + "/" + artwork?.url;
   }
 
 }

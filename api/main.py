@@ -48,6 +48,7 @@ class Config(BaseModel):
   backgroundColor: Optional[str] = "#FFF8DC"
   navbarTextColor: Optional[str] = "#164D7A"
   navbarHoverTextColor: Optional[str] = "#F97924"
+  filename: Optional[str] = ''
 
   class Config:
     allow_population_by_field_name = True
@@ -66,6 +67,7 @@ class Work(BaseModel):
   exemplarTitle: Optional[str] = None
   media: Optional[str] = None
   url: Optional[str] = None
+  number: Optional[str] = None
 
   class Config:
     allow_population_by_field_name = True
@@ -123,12 +125,13 @@ async def xyz (fn:str):
   response_description="Returns a thumbnail image",
   response_class="StreamingResponse",
   responses= {200: {"description": "an image", "content": {"image/jpeg": {}}}})
-async def thumbnail_image (filename: str):
+async def thumbnail_image (filename: str, isNumber = False):
   # will check for image in cache and fetch it from github and will both cache it and return it.
   imgio = thumbnail_cache.get(filename)
   if not imgio:
     config = await CONFIG.find_one()
-    filename = urllib.parse.unquote(filename)
+
+    filename = f'david_marshall_{filename}.jpg' if isNumber else urllib.parse.unquote(filename)
     url = config['imageRootURI'] + "/" + filename
     print("fetching from " + url)
     # get the high-res image from github

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { globalConfig } from 'src/app/config';
+import { Artwork } from 'src/app/models/artwork';
 
 @Component({
   selector: 'app-image-focus',
@@ -8,7 +9,7 @@ import { globalConfig } from 'src/app/config';
 })
 export class ImageFocusComponent implements OnInit {
 
-  @Input() image;
+  @Input() artwork: Artwork;
   @Output() focusImageClicked = new EventEmitter();
   _imageURL: string;
 
@@ -16,7 +17,7 @@ export class ImageFocusComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
   // ngOnChanges (changes: SimpleChanges) {
@@ -30,7 +31,10 @@ export class ImageFocusComponent implements OnInit {
   }
 
   imageURL () {
-    return globalConfig.imageRootURI + "/" + this.image?.url;
+    if (this.artwork.number)
+      return globalConfig.imageRootURI + "/" + globalConfig.filename + this.artwork.number + '.jpg';
+    else
+    return globalConfig.imageRootURI + "/" + this.artwork?.url;
   }
 
 }

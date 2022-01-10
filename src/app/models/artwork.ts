@@ -6,6 +6,7 @@ export class Artwork {
   dimensions:string;
   tags:string[];
   media: string;
+  number: string;
   exemplarTitle: string
 
   constructor (json) {

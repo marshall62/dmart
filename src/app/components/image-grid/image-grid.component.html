@@ -1,12 +1,12 @@
 <div class="grid-content">
   <table>
     <tr *ngFor="let row of exemplarTable; let i=index">
-      <td *ngFor="let col of exemplarTable[i]">
-        <img class="exemplar-image" src="{{imageURL(col)}}"
-        [routerLink]='["/works/",col.exemplarTitle.toLocaleLowerCase()]'/>
+      <td *ngFor="let artwork of exemplarTable[i]">
+        <img class="exemplar-image" src="{{imageURL(artwork)}}"
+        [routerLink]='["/works/",artwork.exemplarTitle.toLocaleLowerCase()]'/>
         <p>
           <a class="exemplar-text"
-          [routerLink]='["/works/",col.exemplarTitle.toLocaleLowerCase()]'>{{col.exemplarTitle}}
+          [routerLink]='["/works/",artwork.exemplarTitle.toLocaleLowerCase()]'>{{artwork.exemplarTitle | titlecase }}
         </a></p>
       </td>
     </tr>
