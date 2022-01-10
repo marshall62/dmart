@@ -1,0 +1,13 @@
+.image-with-text {
+  text-align: center;
+  font: caption;
+}
+
+.image-with-text img {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  height: 70vmin;
+}
+
+

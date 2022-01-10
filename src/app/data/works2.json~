@@ -1,0 +1,127 @@
+[{
+    "url": "/blueberries.jpg",
+    "title": "Blueberries",
+    "dimensions": "14 x 11",
+    "media": "oil on panel",
+    "date": "2009",
+    "price": "Sold",
+    "tags": ["exemplar", "still life"],
+    "exemplarTitle": "Still life"
+  },
+  {
+    "url": "/DSC_0054.jpg",
+    "tags": ["still life"],
+    "date": "2020",
+  },
+  {
+    "url": "/DSC_0057.jpg",
+    "tags": ["still life"],
+    "date": "2020",
+  },
+  {
+    "url": "/DSC_0058.jpg",
+    "tags": ["still life"],
+    "date": "2020",
+  },
+  {
+    "url": "/DSC_0059.jpg",
+    "tags": ["still life"],
+    "date": "2020",
+  },
+  {
+    "url": "/DSC_0062.jpg",
+    "tags": ["still life"],
+  },
+  {
+    "url": "/IMG_1550.jpeg",
+    "tags": ["still life"],
+  },
+  {
+    "url": "/IMG_1776.jpeg",
+    "tags": ["still life"],
+  },
+  {
+    "url": "/IMG_1832.jpeg",
+    "tags": ["still life"],
+  },
+  {
+    "url": "/IMG_7488.jpeg",
+    "tags": ["still life"],
+  },
+  {
+    "url": "/venus2.jpg",
+    "title": "Venus 2",
+    "dimensions": "28 x 20",
+    "media": "oil on canvas",
+    "date": "2018",
+    "tags": ["still life"],
+  },
+  {
+    "url": "/venus1.jpg",
+    "title": "Venus 1",
+    "dimensions": "28 x 20",
+    "media": "oil on canvas",
+    "date": "2018",
+    "tags": ["still life"],
+  },
+  {
+    "url": "/DSC_0159.jpg",
+    "title": "Still life",
+    "dimensions": "28 x 20",
+    "media": "oil on canvas",
+    "date": "2018",
+    "tags": ["still life"],
+  },
+  {
+    "url": "/DSC_0161.jpeg",
+    "title": "Still life",
+    "dimensions": "28 x 20",
+    "media": "oil on canvas",
+    "date": "2018",
+    "tags": ["still life"],
+  },
+  {
+    "url": "/DSC_0069.jpg",
+    "title": "Kids in the Studio",
+    "dimensions": "28 x 20",
+    "media": "oil on canvas",
+    "date": "2018",
+    "tags": ["other", "exemplar"],
+    "exemplarTitle": "Other"
+  },
+
+  {
+    "url": "/portraits/paula asleep.jpeg",
+    "title": "Paula",
+    "dimensions": "28 x 20",
+    "media": "oil on canvas",
+    "date": "1994",
+    "tags": ["portrait", "exemplar"],
+    "exemplarTitle": "Portrait"
+  },
+
+  {
+    "url": "/landscapes/IMG_1436.jpeg",
+    "title": "Landscape",
+    "dimensions": "28 x 20",
+    "media": "oil on canvas",
+    "date": "2018",
+    "tags": ["landscape", "exemplar"],
+    "exemplarTitle": "Landscape"
+  },
+  {
+    "url": "/landscapes/IMG_1437.jpeg",
+    "title": "Landscape",
+    "dimensions": "28 x 20",
+    "media": "oil on canvas",
+    "date": "2018",
+    "tags": ["landscape"],
+  },
+  {
+    "url": "/landscapes/IMG_1462.jpeg",
+    "title": "Landscape",
+    "dimensions": "28 x 20",
+    "media": "oil on canvas",
+    "date": "2018",
+    "tags": ["landscape"],
+  }]

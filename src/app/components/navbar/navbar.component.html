@@ -1,0 +1,54 @@
+<div class="navbar navbar-light" style="height:10vh;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" ><span class="navbar-title">{{artist}} </span></a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}">Home</a>
+        </li>
+        <li>
+          <a routerLink='/recentWork'
+            routerLinkActive="active">Recent Work
+          </a>
+        </li>
+        <li>
+          <a routerLink='/allWork'
+            routerLinkActive="active">All Work
+          </a>
+        </li>
+
+        <li>
+          <a routerLink='/works/categories'
+            routerLinkActive="active">By Category
+          </a>
+        </li>
+
+      </ul>
+      <div class="navbar-header navbar-right">
+
+      </div>
+      <form id="searchForm"  (ngSubmit)="searchWorks(searchTerm)" class="navbar-form navbar-right"  >
+        <div class="form-group">
+          <!-- <input type="text" [(ngModel)]="searchTerm" name="searchTerm" class="form-control" placeholder="Search Sessions" > -->
+          <input type="text" [(ngModel)]="searchTerm" name="searchTerm" class="form-control" placeholder="Search Works" >
+        </div>
+        <button class="btn btn-default" modal-trigger="searchModal" >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- <simple-modal elementId="searchModal" title="Matching Sessions">
+  <div class="list-group">
+    <a class="list-group-item" *ngFor="let session of foundSessions"
+      [routerLink]="['/events', session.eventId]">
+    {{session.name}}
+    </a>
+  </div>
+</simple-modal> -->

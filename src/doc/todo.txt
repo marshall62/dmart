@@ -1,0 +1,10 @@
+TODO:
+
+Image sizes:
+   Currently I'm working with one high-res image for the modal, focus, and thumb.  Create 3 dirs
+   on github for these different categories and fetch the image appropriately.  Then write
+   a python app that will take one image and generate the 2 others.
+
+Adjust CSS for colors of background and text based on the config object.
+
+There are apps that ping the heroku apps to keep them alive and from being swapped out (e.g. Kaffeine )  [https://medium.com/@morgannewman/how-to-keep-your-free-heroku-app-online-forever-4093ef69d7f5 ]

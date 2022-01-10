@@ -1,0 +1,13 @@
+<div class="image-modal">
+  <div class="image-modal-content image-with-text">
+    <span class="close cursor" (click)="close()">&times;</span>
+    <img src="{{imageURL()}}">
+    <p>
+      <span *ngIf="image.title">{{image.title}}</span>
+      <span *ngIf="image.media">,&nbsp;{{image.media}}</span>
+      <span *ngIf="image.dimensions">,&nbsp;{{image.dimensions}}</span>
+      <span *ngIf="image.date">,&nbsp;{{image.date}}</span>
+      <span *ngIf="image.price">,&nbsp;{{image.price}}</span>
+    </p>
+  </div>
+</div>

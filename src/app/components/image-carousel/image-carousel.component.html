@@ -1,0 +1,11 @@
+<div class="carousel-content" (window:resize)="onResize($event)">
+  <a class="prev" *ngIf="beginIndex > 0" (click)="scrollView(-1)">&#10094;</a>
+  <a class="next" *ngIf="endIndex < artworks.length" (click)="scrollView(1)">&#10095;</a>
+
+  <div class="image-row">
+    <div class="image-column" *ngFor="let image of viewableThumbs; let i = index">
+      <img src="{{imageURL(image)}}" [ngClass]="{'selected-image': i===selectedIndex}"
+      (click)="imageClicked(i)" style="width:100%;" class="hover-shadow cursor">
+    </div>
+  </div>
+</div>

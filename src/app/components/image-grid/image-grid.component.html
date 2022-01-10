@@ -1,0 +1,14 @@
+<div class="grid-content">
+  <table>
+    <tr *ngFor="let row of exemplarTable; let i=index">
+      <td *ngFor="let col of exemplarTable[i]">
+        <img class="exemplar-image" src="{{imageURL(col)}}"
+        [routerLink]='["/works/",col.exemplarTitle.toLocaleLowerCase()]'/>
+        <p>
+          <a class="exemplar-text"
+          [routerLink]='["/works/",col.exemplarTitle.toLocaleLowerCase()]'>{{col.exemplarTitle}}
+        </a></p>
+      </td>
+    </tr>
+  </table>
+</div>

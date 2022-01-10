@@ -1,0 +1,18 @@
+<app-image-focus
+  [image]="artworks[index]"
+  (focusImageClicked)="imageModalOpen=true">
+</app-image-focus>
+
+<app-image-modal
+  *ngIf="imageModalOpen"
+  (modalClosed)="imageModalOpen=false"
+  [image]="artworks[index]">
+</app-image-modal>
+
+<app-image-carousel
+  [artworks]="artworks"
+  (carouselImageClicked)="updateLarge($event)"
+  [selectedIndex]="0">
+</app-image-carousel>
+
+
