@@ -35,9 +35,6 @@ export class ImageGridComponent implements OnInit {
   }
 
   imageURL (artwork: Artwork) {
-    if (artwork.number)
-      return globalConfig.imageRootURI + "/" + globalConfig.filename + artwork.number + '.jpg';
-    else
     return globalConfig.imageRootURI + "/" + artwork?.url;
   }
 

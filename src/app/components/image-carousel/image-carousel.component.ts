@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { globalConfig } from 'src/app/config';
-import { ImageService } from 'src/app/services/image.service';
 import { images } from '../../data/image.data';
 
 @Component({
@@ -19,11 +17,10 @@ export class ImageCarouselComponent implements OnInit, OnChanges {
   thumbURLs = [];
   viewableThumbs = images.slice(0,this.endIndex);
 
-  constructor(private imageService: ImageService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.determineThumbURLs();
     this.beginIndex = 0;
     this.selectedIndex = 0;
     this.endIndex = this.artworks.length;
@@ -36,24 +33,6 @@ export class ImageCarouselComponent implements OnInit, OnChanges {
     console.log("in ngOnChanges",changes);
     this.artworks = changes.artworks.currentValue;
     this.ngOnInit();
-  }
-
-
-  determineThumbURLs () {
-    for (let artwork of this.artworks) {
-      this.imageService.testThumbExists(artwork).then(v => {
-        if (v) {
-          this.thumbURLs.push(globalConfig.imageRootURI + "/thumbnail/" + artwork.url)
-        }
-        else {
-          this.thumbURLs.push(globalConfig.imageRootURI + "/" + artwork.url)
-        }
-      })
-
-
-
-    }
-
   }
 
 
@@ -104,8 +83,8 @@ export class ImageCarouselComponent implements OnInit, OnChanges {
   }
 
   imageURL (artwork) {
-    // return globalConfig.imageRootURI + "/" + artwork?.url;
-    return this.imageService.getThumbnailURL(artwork)
+    // no longer need ImageService for thumbnails.  Backend generates them.
+    return globalConfig.devAPIURI + "/images/thumbnail?filename=" + encodeURIComponent(artwork.url)
   }
 
 }

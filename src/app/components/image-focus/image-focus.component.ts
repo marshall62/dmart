@@ -31,9 +31,6 @@ export class ImageFocusComponent implements OnInit {
   }
 
   imageURL () {
-    if (this.artwork.number)
-      return globalConfig.imageRootURI + "/" + globalConfig.filename + this.artwork.number + '.jpg';
-    else
     return globalConfig.imageRootURI + "/" + this.artwork?.url;
   }
 

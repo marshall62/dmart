@@ -51,7 +51,6 @@ export class ImageSlideShowComponent implements OnInit {
   }
 
   updateLarge (event) {
-    console.log("updateLarge ", event.index);
     this.index = event.index;
   }
 
