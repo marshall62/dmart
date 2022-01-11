@@ -5,7 +5,8 @@ export let globalConfig = {
   navbarHoverTextColor:"red",
   artist:"",
   recentWorkYears:1,
-  devAPIURI: "http://localhost:8000"
+  devAPIURI: "http://localhost:8000",
+  filename: ""
 }
 
 export function updateConfig (newConfig) {

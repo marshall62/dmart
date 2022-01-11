@@ -19,9 +19,9 @@ export class ImageService {
   getThumbnailURL (artwork:Artwork) {
     // return globalConfig.imageRootURI + "/" + artwork.url;
     if (artwork.number)
-      return globalConfig.devAPIURI + "/images/thumbnail/" + encodeURIComponent(artwork.number) + "?isNumber=true";
+      return globalConfig.devAPIURI + "/images/thumbnail?filename=" + encodeURIComponent(artwork.number) + "&isNumber=true";
     else
-      return globalConfig.devAPIURI + "/images/thumbnail/" + encodeURIComponent(artwork.url);
+      return globalConfig.devAPIURI + "/images/thumbnail?filename=" + encodeURIComponent(artwork.url);
   }
 
   testThumbExists (artwork: Artwork) {

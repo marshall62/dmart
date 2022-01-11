@@ -1,12 +1,12 @@
 <app-image-focus
-  [image]="artworks[index]"
+  [artwork]="artworks[index]"
   (focusImageClicked)="imageModalOpen=true">
 </app-image-focus>
 
 <app-image-modal
   *ngIf="imageModalOpen"
   (modalClosed)="imageModalOpen=false"
-  [image]="artworks[index]">
+  [artwork]="artworks[index]">
 </app-image-modal>
 
 <app-image-carousel
