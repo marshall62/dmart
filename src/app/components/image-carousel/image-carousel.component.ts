@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { globalConfig } from 'src/app/config';
+import {environment} from '../../../environments/environment';
+
 import { images } from '../../data/image.data';
 
 @Component({
@@ -84,7 +85,7 @@ export class ImageCarouselComponent implements OnInit, OnChanges {
 
   imageURL (artwork) {
     // no longer need ImageService for thumbnails.  Backend generates them.
-    return globalConfig.devAPIURI + "/images/thumbnail?filename=" + encodeURIComponent(artwork.url)
+    return environment.apiUrl + "/images/thumbnail?filename=" + encodeURIComponent(artwork.url)
   }
 
 }

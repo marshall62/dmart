@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { globalConfig } from '../config'
+import {environment} from '../../environments/environment';
 import { Artwork } from '../models/artwork';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { globalConfig } from '../config';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +15,12 @@ export class ImageService {
     // this.api = new API({baseURI: globalConfig.imageRootURI})
   }
 
-  getThumbnailURL (artwork:Artwork) {
+  getThumbnailURL (artwork:Artwork): string {
     // return globalConfig.imageRootURI + "/" + artwork.url;
     if (artwork.number)
-      return globalConfig.devAPIURI + "/images/thumbnail?filename=" + encodeURIComponent(artwork.number) + "&isNumber=true";
+      return environment.apiUrl + "/images/thumbnail?filename=" + encodeURIComponent(artwork.number) + "&isNumber=true";
     else
-      return globalConfig.devAPIURI + "/images/thumbnail?filename=" + encodeURIComponent(artwork.url);
+      return environment.apiUrl + "/images/thumbnail?filename=" + encodeURIComponent(artwork.url);
   }
 
   testThumbExists (artwork: Artwork) {
