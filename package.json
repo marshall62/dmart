@@ -21,7 +21,6 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
-    "angular-jwt": "github:auth0/angular-jwt",
     "bootstrap": "^5.1.1",
     "express": "^4.17.2",
     "jquery": "^3.6.0",
