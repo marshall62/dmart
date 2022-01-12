@@ -6,6 +6,7 @@
     "dev-start": "ng serve",
     "start": "node server.js",
     "build": "ng build --configuration=production",
+    "heroku-postbiuld": "ng build --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "coverage": "jest --coverage"
