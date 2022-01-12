@@ -29,6 +29,21 @@ If encounter problems,  try uvicorn min_api:app --reload to see that the / URL r
 - App will be running on [localhost:4200]()
 
 
+## Dev vs Production settings
+
+package.json npm build will create production build that is placed in the /dist folder.
+The npm start command is set to run 
+node server.js which tests out this build as production even on my dev machines.
+
+To run it for dev use nodemon server.js
+
+This sets the angular front-end running on localhost:8080
+Because it is a production build (uses environments/environment.prod.ts) it will expect the backend to be 
+https://dmart-api.herokuapp.com/  .  So this is a good way to test a locally running front-end with a production back-end running on heroku.
+
+To run it in true dev mode (port 4200) use `npm run dev-start`
+
+
 
 ## Deployment to run in the cloud
 
