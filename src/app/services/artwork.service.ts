@@ -5,6 +5,9 @@ import { map, tap } from 'rxjs/operators';
 import { globalConfig } from '../config'
 import { HttpClient } from '@angular/common/http';
 import { Artwork } from '../models/artwork';
+import { environment } from '../../environments/environment';
+
+// Gets the artworks
 
 @Injectable({
   providedIn: 'root'
@@ -29,31 +32,31 @@ export class ArtworkService {
 
   fetchArtworks (group:string): Observable<Artwork[]> {
     if (group === "all")
-      return this.http.get(globalConfig.devAPIURI + "/works").pipe(
+      return this.http.get(environment.apiUrl + "/works").pipe(
         map((x:any[]) => x.map(xx => new Artwork(xx))),
       )
     else if (group === "recent") {
       // get all and filter the recent
-      return this.http.get(globalConfig.devAPIURI + "/works").pipe(
+      return this.http.get(environment.apiUrl + "/works").pipe(
         map((x: any[]) => x.map(xx => new Artwork(xx))),
         map((images:any[]) => images.filter(this.isRecent)),
         )
     }
     else
-      return this.http.get(globalConfig.devAPIURI + "/works/tag/" + group).pipe(
+      return this.http.get(environment.apiUrl + "/works/tag/" + group).pipe(
         map((x:any[]) => x.map(xx => new Artwork(xx)))
       )
 
   }
 
   fetchExemplarArtworks (): Observable<Artwork[]> {
-    return this.http.get(globalConfig.devAPIURI + "/works/tag/exemplar").pipe(
+    return this.http.get(environment.apiUrl + "/works/tag/exemplar").pipe(
       map((x:any[]) => x.map(xx => new Artwork(xx)))
     )
   }
 
   searchArtworks (searchTerm: string): Observable<Artwork[]> {
-    return this.http.get(globalConfig.devAPIURI + "/works/search/" + searchTerm).pipe(
+    return this.http.get(environment.apiUrl + "/works/search/" + searchTerm).pipe(
       map((x:any[]) => x.map(xx => new Artwork(xx)))
     );
   }
