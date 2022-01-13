@@ -91,7 +91,7 @@ export class ImageCarouselComponent implements OnInit, OnChanges {
     if (environment.generateThumbs)
       return environment.apiUrl + "/images/thumbnail?filename=" + encodeURIComponent(artwork.url)
     else
-      return globalConfig.imageRootURI + "/thumbnails/" + artwork.url
+      return globalConfig.imageRootURI + "/thumb/" + artwork.url
   }
 
 }
