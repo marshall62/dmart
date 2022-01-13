@@ -1,4 +1,7 @@
+import { ElementSchemaRegistry } from '@angular/compiler';
 import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { globalConfig } from 'src/app/config';
+import { Artwork } from 'src/app/models/artwork';
 import {environment} from '../../../environments/environment';
 
 import { images } from '../../data/image.data';
@@ -9,14 +12,14 @@ import { images } from '../../data/image.data';
   styleUrls: ['./image-carousel.component.css']
 })
 export class ImageCarouselComponent implements OnInit, OnChanges {
-  @Input() artworks;
+  @Input() artworks: Artwork[] = [];
   @Output() carouselImageClicked = new EventEmitter();
   @Input() selectedIndex: number = 0;
-  numThumbs = images.length;
+  numThumbs = this.artworks.length;
   beginIndex = 0;
   endIndex = this.numThumbs;
   thumbURLs = [];
-  viewableThumbs = images.slice(0,this.endIndex);
+  viewableThumbs = this.artworks.slice(0,this.endIndex);
 
   constructor() {
   }
@@ -83,9 +86,12 @@ export class ImageCarouselComponent implements OnInit, OnChanges {
     this.carouselImageClicked.emit(event)
   }
 
-  imageURL (artwork) {
+  imageURL (artwork: Artwork): string {
     // no longer need ImageService for thumbnails.  Backend generates them.
-    return environment.apiUrl + "/images/thumbnail?filename=" + encodeURIComponent(artwork.url)
+    if (environment.generateThumbs)
+      return environment.apiUrl + "/images/thumbnail?filename=" + encodeURIComponent(artwork.url)
+    else
+      return globalConfig.imageRootURI + "/thumbnails/" + artwork.url
   }
 
 }
