@@ -55,6 +55,12 @@ export class ArtworkService {
     )
   }
 
+  getHomeArtwork (): Observable<Artwork> {
+    return this.http.get(environment.apiUrl + "/works/tag/home").pipe(
+      map((x:any[]) => new Artwork(x[0]))
+    )
+  }
+
   searchArtworks (searchTerm: string): Observable<Artwork[]> {
     return this.http.get(environment.apiUrl + "/works/search/" + searchTerm).pipe(
       map((x:any[]) => x.map(xx => new Artwork(xx)))

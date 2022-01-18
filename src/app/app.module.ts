@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ImageGridComponent } from './components/image-grid/image-grid.component';
 import { ConfigService } from './services/config.service';
 import { ImageService } from './services/image.service';
+import { HomeComponent } from './components/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { ImageService } from './services/image.service';
     ImageFocusComponent,
     NavbarComponent,
     ImageSlideShowComponent,
-    ImageGridComponent
+    ImageGridComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

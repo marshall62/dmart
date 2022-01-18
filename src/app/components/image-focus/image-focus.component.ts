@@ -31,7 +31,7 @@ export class ImageFocusComponent implements OnInit {
   }
 
   imageURL () {
-    return globalConfig.imageRootURI + "/" + this.artwork?.url;
+    return globalConfig.imageRootURI + "/midsize/" + this.artwork?.url;
   }
 
 }
