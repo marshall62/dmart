@@ -4,8 +4,9 @@
   <p class="focus-image-caption">
     <span *ngIf="artwork?.title">{{artwork.title}}</span>
     <span *ngIf="artwork?.media">,&nbsp;{{artwork.media}}</span>
-    <span *ngIf="artwork?.dimensions">,&nbsp;{{artwork.dimensions}}</span>
-    <span *ngIf="artwork?.date">,&nbsp;{{artwork.date}}</span>
+    <span *ngIf="artwork?.width">,&nbsp;{{artwork.width}}</span>
+    <span *ngIf="artwork?.height"> x {{artwork.height}}</span>
+    <span *ngIf="artwork?.year">,&nbsp;{{artwork.year}}</span>
     <span *ngIf="artwork?.price">,&nbsp;{{artwork.price}}</span>
   </p>
 </div>

@@ -1,13 +1,14 @@
 export class Artwork {
   title:string;
-  url:string;
-  price:string;
-  date:string;
-  dimensions:string;
+  imagePath:string;
+  price:number;
+  year:number;
+  width:number;
+  height:number;
   tags:string[];
   media: string;
-  number: string;
-  exemplarTitle: string
+  isSold: boolean;
+  categoryName: string
 
   constructor (json) {
     for (let field in json) {

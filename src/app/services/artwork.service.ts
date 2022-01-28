@@ -27,7 +27,11 @@ export class ArtworkService {
 
   isRecent (artwork: Artwork) {
     let recentYears = globalConfig.recentWorkYears * 365 * 24 * 60 * 60 * 1000;
-    return (new Date().getTime() - new Date(artwork.date).getTime()) <= recentYears
+    const diffMs = new Date().getTime() - new Date(artwork.year?.toString()).getTime();
+    const res= diffMs <= recentYears;
+    console.log(`isRecent ${artwork.year} diff: ${diffMs}, ${globalConfig.recentWorkYears} ${recentYears} ->${res}`);
+    return res;
+
   }
 
   fetchArtworks (group:string): Observable<Artwork[]> {
@@ -39,6 +43,7 @@ export class ArtworkService {
       // get all and filter the recent
       return this.http.get(environment.apiUrl + "/works").pipe(
         map((x: any[]) => x.map(xx => new Artwork(xx))),
+        tap(console.log),
         map((images:any[]) => images.filter(this.isRecent)),
         )
     }

@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     this.artworkSvc.getHomeArtwork().subscribe((artwork: Artwork) => {
       console.log("Got home artwork of:", artwork);
 
-      this.imageURL = globalConfig.imageRootURI + "/midsize/" + artwork.url;
+      this.imageURL = globalConfig.imageRootURI + "/midsize/" + artwork.imagePath;
       console.log(this.imageURL)
     })
   }

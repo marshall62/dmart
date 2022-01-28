@@ -1,9 +1,11 @@
 <div class="carousel-content" (window:resize)="onResize($event)">
-  <a class="prev" *ngIf="beginIndex > 0" (click)="scrollView(-1)">&#10094;</a>
-  <a class="next" *ngIf="endIndex < artworks.length" (click)="scrollView(1)">&#10095;</a>
+  <!-- <a class="prev" *ngIf="beginIndex > 0" (click)="scrollView(-1)">&#10094;</a> -->
+  <a class="prev" *ngIf="beginIndex > 0" (click)="scrollView(-1)"><fa-icon [icon]="angleLeft"></fa-icon></a>
+  <!-- <a class="next" *ngIf="endIndex < artworks.length" (click)="scrollView(1)">&#10095;</a> -->
+  <a class="next" *ngIf="endIndex < artworks.length" (click)="scrollView(1)"><fa-icon [icon]="angleRight"></fa-icon></a>
 
   <div class="image-row">
-    <div class="image-column" *ngFor="let artwork of viewableThumbs; let i = index">
+    <div [ngClass]='{"image-column": !small, "image-column-phone": small}' *ngFor="let artwork of viewableThumbs; let i = index">
       <img src="{{imageURL(artwork)}}" [ngClass]="{'selected-image': i===selectedIndex}"
       (click)="imageClicked(i)" style="width:100%;" class="hover-shadow cursor">
     </div>

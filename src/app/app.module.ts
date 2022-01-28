@@ -14,6 +14,7 @@ import { ImageGridComponent } from './components/image-grid/image-grid.component
 import { ConfigService } from './services/config.service';
 import { ImageService } from './services/image.service';
 import { HomeComponent } from './components/home/home.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [
     ArtworkService,

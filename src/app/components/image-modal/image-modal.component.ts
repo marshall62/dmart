@@ -21,7 +21,7 @@ export class ImageModalComponent implements OnInit {
   }
 
   imageURL () {
-    return globalConfig.imageRootURI + "/" + this.artwork.url;
+    return globalConfig.imageRootURI + "/" + this.artwork.imagePath;
   }
 
 }

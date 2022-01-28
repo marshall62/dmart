@@ -9,13 +9,17 @@ import { ArtworkService } from 'src/app/services/artwork.service';
   styleUrls: ['./image-grid.component.css']
 })
 export class ImageGridComponent implements OnInit {
-  exemplarTable;
+  categoryTable;
+  worklist;
+
+  numColumns = 2;
 
   constructor(private artworkSvc: ArtworkService) { }
 
   ngOnInit(): void {
     this.artworkSvc.fetchExemplarArtworks().subscribe(artworks => {
-      this.exemplarTable = this.tablify(artworks, 2)
+      this.worklist = artworks;
+      this.categoryTable = this.tablify(artworks, this.numColumns)
     });
   }
 
@@ -35,7 +39,7 @@ export class ImageGridComponent implements OnInit {
   }
 
   imageURL (artwork: Artwork) {
-    return globalConfig.imageRootURI + "/" + artwork?.url;
+    return globalConfig.imageRootURI + "/midsize/" + artwork?.imagePath;
   }
 
 }

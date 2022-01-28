@@ -1,20 +1,19 @@
-.exemplar-image {
-  width: auto;
-  height: 300px;
-  cursor: pointer;
-}
 
 .exemplar-text {
   color: black;
   font-size: 16px;
 }
 
-.grid-content {
-  padding-left: 10px;
-  padding-top: 20px;
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 25vh 25vh 25vh;
+  grid-gap: 4vh;
+  margin-left: 2vw;
+
 }
 
-td {
-  padding: 20px;
-  text-align:center;
+.photo > img {
+  height: 100%;
+  cursor: pointer;
 }

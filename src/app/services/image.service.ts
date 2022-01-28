@@ -17,14 +17,11 @@ export class ImageService {
 
   getThumbnailURL (artwork:Artwork): string {
     // return globalConfig.imageRootURI + "/" + artwork.url;
-    if (artwork.number)
-      return environment.apiUrl + "/images/thumbnail?filename=" + encodeURIComponent(artwork.number) + "&isNumber=true";
-    else
-      return environment.apiUrl + "/images/thumbnail?filename=" + encodeURIComponent(artwork.url);
+      return environment.apiUrl + "/images/thumbnail?filename=" + encodeURIComponent(artwork.imagePath);
   }
 
   testThumbExists (artwork: Artwork) {
-    const url = globalConfig.imageRootURI + "/thumb/" + artwork.url;
+    const url = globalConfig.imageRootURI + "/thumb/" + artwork.imagePath;
     // get image in the thumbnail dir
     return window.fetch(url, {method: 'GET', mode: 'cors'})
       .then(response => {
