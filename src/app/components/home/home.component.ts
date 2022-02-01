@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { globalConfig } from 'src/app/config';
 import { Artwork } from 'src/app/models/artwork';
 import { ArtworkService } from 'src/app/services/artwork.service';
+import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-home-component',
@@ -12,15 +12,20 @@ export class HomeComponent implements OnInit {
 
   imageURL = '';
 
-  constructor(private artworkSvc: ArtworkService) { }
+  constructor(private artworkSvc: ArtworkService, private configSvc: ConfigService) { }
 
   ngOnInit(): void {
-    this.artworkSvc.getHomeArtwork().subscribe((artwork: Artwork) => {
-      console.log("Got home artwork of:", artwork);
+    this.configSvc.config$.subscribe(config => {
+      console.log("In HomeComponent with config ",config);
 
-      this.imageURL = globalConfig.imageRootURI + "/midsize/" + artwork.imagePath;
-      console.log(this.imageURL)
+      this.artworkSvc.getHomeArtwork().subscribe((artwork: Artwork) => {
+        console.log("Got home artwork of:", artwork);
+
+        this.imageURL = config.imageRootURI + "/midsize/" + artwork.imagePath;
+        console.log(this.imageURL)
+      })
     })
+
   }
 
 }

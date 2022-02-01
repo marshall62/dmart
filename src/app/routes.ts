@@ -14,14 +14,4 @@ export const appRoutes:Routes = [
   {path: 'works/:group', component: ImageSlideShowComponent },
   {path: 'works/search/:term', component: ImageSlideShowComponent },
 
-  // {path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator]},
-  // {path: '', redirectTo: '/events', pathMatch:'full' },
-  // {path: '404',component: Error404Component},
-  // {
-  //   path: 'user',
-  //   loadChildren: () => import('./user/user.module')
-  //     .then(m => m.UserModule)
-  // }
-
-
 ]

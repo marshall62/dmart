@@ -10,16 +10,16 @@ import { globalConfig, updateConfig } from '../app/config'
 export class AppComponent implements OnInit {
 
   artist;
+  imageRootURI;
 
   constructor (private configSvc: ConfigService) {}
 
   ngOnInit(): void {
     this.configSvc.getConfig().subscribe(c => {
-      console.log("Database config",c);
-
+      this.imageRootURI = c.imageRootURI;
+      this.artist = c.artist;
+      this.configSvc.addConfig(c); // other components need this config so add it back to the service.
       updateConfig(c);
-      this.artist = globalConfig.artist;
-
     })
   }
 
