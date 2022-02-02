@@ -6,7 +6,7 @@
 
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 48vw 48vw;
   grid-template-rows: 25vh 25vh 25vh;
   gap: 4vh 2vw;
   margin-left: 2vw;
