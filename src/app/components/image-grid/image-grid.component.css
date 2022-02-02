@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 25vh 25vh 25vh;
-  grid-gap: 4vh;
+  gap: 4vh 2vw;
   margin-left: 2vw;
 
 }
