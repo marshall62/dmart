@@ -8,6 +8,7 @@ export class Artwork {
   tags:string[];
   media: string;
   isSold: boolean;
+  isActive: boolean;
   categoryName: string
 
   constructor (json) {

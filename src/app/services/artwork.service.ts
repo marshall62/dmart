@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, filter } from 'rxjs/operators';
 import { globalConfig } from '../config'
 import { HttpClient } from '@angular/common/http';
 import { Artwork } from '../models/artwork';
@@ -44,31 +44,35 @@ export class ArtworkService {
       return this.http.get(environment.apiUrl + "/works").pipe(
         map((x: any[]) => x.map(xx => new Artwork(xx))),
         tap(console.log),
-        map((images:any[]) => images.filter(this.isRecent)),
+        map((artworks:Artwork[]) => artworks.filter(artwork => artwork.isActive && this.isRecent(artwork))),
         )
     }
     else
       return this.http.get(environment.apiUrl + "/works/tag/" + group).pipe(
-        map((x:any[]) => x.map(xx => new Artwork(xx)))
+        map((x:any[]) => x.map(xx => new Artwork(xx))),
+        map((artworks: Artwork[]) => artworks.filter(artwork => artwork.isActive))
       )
 
   }
 
   fetchExemplarArtworks (): Observable<Artwork[]> {
     return this.http.get(environment.apiUrl + "/works/tag/exemplar").pipe(
-      map((x:any[]) => x.map(xx => new Artwork(xx)))
+      map((x:any[]) => x.map(xx => new Artwork(xx))),
+      map((artworks: Artwork[]) => artworks.filter(artwork => artwork.isActive))
     )
   }
 
   getHomeArtwork (): Observable<Artwork> {
     return this.http.get(environment.apiUrl + "/works/tag/home").pipe(
-      map((x:any[]) => new Artwork(x[0]))
+      map((works:any[]) => works.find(work => work.isActive)),
+      map(work => new Artwork(work))
     )
   }
 
   searchArtworks (searchTerm: string): Observable<Artwork[]> {
     return this.http.get(environment.apiUrl + "/works/search/" + searchTerm).pipe(
-      map((x:any[]) => x.map(xx => new Artwork(xx)))
+      map((x:any[]) => x.map(xx => new Artwork(xx))),
+      map((artworks: Artwork[]) => artworks.filter(artwork => artwork.isActive))
     );
   }
 
