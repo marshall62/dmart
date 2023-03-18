@@ -22,21 +22,11 @@ export class ImageFocusComponent implements OnInit {
 
   }
 
-  // ngOnChanges (changes: SimpleChanges) {
-  //   console.log("focus",changes);
-
-  //   this.image = changes.image.currentValue;
-  // }
 
   handleClick () {
     // this.focusImageClicked.emit(true);
-    console.log("Initiating route to modal", this.artwork);
     this.router.navigateByUrl("works/fullsize/"+this.artwork?.imagePath,
       {state: {artwork: this.artwork, lastUrl: this.router.url, index: this.index}});
-    // To route from this component to a child (modal) this component needs its own route but it doesn't have one.
-    // Its in the carousel.  So this might need to create an event that the carousel listens for so that it
-    // route to the modal.   The below doesn't work since I have no route.
-    // this.router.navigate([this.artwork?.imagePath], {relativeTo: this.route});
   }
 
   imageURL () {
