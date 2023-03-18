@@ -17,13 +17,6 @@ export class AppComponent implements OnInit {
   constructor (private configSvc: ConfigService) {}
 
   ngOnInit(): void {
-    this.configSvc.getConfig().subscribe((c:Config) => {
-      this.imageRootURI = c.imageRootURI;
-      this.bgColor = c.backgroundColor;
-      this.artist = c.artist;
-      this.configSvc.addConfig(c); // other components need this config so add it back to the service.
-      updateConfig(c);
-    })
   }
 
 

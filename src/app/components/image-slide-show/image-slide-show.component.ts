@@ -20,16 +20,13 @@ export class ImageSlideShowComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private artworkService: ArtworkService, private router: Router
     ) {
+      this.index = this.router.getCurrentNavigation()?.extras?.state?.index || 0;
       this.route.paramMap.subscribe(params => {
         this.ngOnInit();
     });
-
-    console.log("In constructor");
-
   }
 
   ngOnInit(): void {
-    this.index = 0
 
     let group = this.route.snapshot.params['group']
     let searchTerm = this.route.snapshot.params['term']
@@ -41,8 +38,6 @@ export class ImageSlideShowComponent implements OnInit {
       console.log("OnInit term:", searchTerm);
       this.artworks = this.artworkService.searchResults;
     }
-
-
   }
 
   loadArtworks(group): void {

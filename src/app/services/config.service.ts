@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, Observable , OperatorFunction} from 'rxjs';
-import { first , tap, filter} from 'rxjs/operators';
+import { tap, filter} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {Config} from '../models/config';
 

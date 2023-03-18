@@ -2,7 +2,7 @@
 
 ### More instructions on Fast API backend in /api/docs/instructions.MD ###
 
-- source .venv/bin/activate
+- source venv/bin/activate
 - cd api
 - uvicorn main:app --reload
 

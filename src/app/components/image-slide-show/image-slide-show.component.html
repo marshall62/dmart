@@ -1,18 +1,22 @@
 <app-image-focus
   [artwork]="artworks[index]"
+  [index]="index"
   (focusImageClicked)="imageModalOpen=true">
 </app-image-focus>
 
-<app-image-modal
+<!-- <app-image-modal
   *ngIf="imageModalOpen"
   (modalClosed)="imageModalOpen=false"
   [artwork]="artworks[index]">
-</app-image-modal>
+</app-image-modal> -->
 
 <app-image-carousel
   [artworks]="artworks"
   (carouselImageClicked)="updateLarge($event)"
   [selectedIndex]="0">
 </app-image-carousel>
+
+<!-- This is where we place the image-modal component when user clicks on the focus image to see it huge -->
+<router-outlet></router-outlet>
 
 

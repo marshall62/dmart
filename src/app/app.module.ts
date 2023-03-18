@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +15,15 @@ import { ConfigService } from './services/config.service';
 import { ImageService } from './services/image.service';
 import { HomeComponent } from './components/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Observable } from 'rxjs';
+import { Config } from './models/config';
+import { AppInitService } from './app-init.service';
+
+// runs once when the app bootstraps.  Sets up the config.
+function initializeApp(initSvc: AppInitService): () => Observable<Config> {
+  return initSvc.Init();
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +46,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   providers: [
     ArtworkService,
     ImageService,
-    ConfigService
+    ConfigService,
+    AppInitService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AppInitService],
+      multi: true
+     }
   ],
   bootstrap: [AppComponent]
 })
