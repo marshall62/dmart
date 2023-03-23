@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { globalConfig } from 'src/app/config';
 import { Artwork } from 'src/app/models/artwork';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-image-focus',
@@ -10,24 +11,22 @@ import { Artwork } from 'src/app/models/artwork';
 export class ImageFocusComponent implements OnInit {
 
   @Input() artwork: Artwork;
+  @Input() index: number;
   @Output() focusImageClicked = new EventEmitter();
   _imageURL: string;
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
   }
 
-  // ngOnChanges (changes: SimpleChanges) {
-  //   console.log("focus",changes);
-
-  //   this.image = changes.image.currentValue;
-  // }
 
   handleClick () {
-    this.focusImageClicked.emit(true);
+    // this.focusImageClicked.emit(true);
+    this.router.navigateByUrl("works/fullsize/"+this.artwork?.imagePath,
+      {state: {artwork: this.artwork, lastUrl: this.router.url, index: this.index}});
   }
 
   imageURL () {

@@ -1,0 +1,38 @@
+Events
+
+Image Slide Show Component:
+   properties:
+       artworks: array of artwork objects
+       index: currently selected artwork in the carousel
+       modalOpen: flag
+
+  HTML:  Includes the image-focus, the image-carousel, and image-modal
+  When a thumbnail is clicked in the carousel, it outputs an event that tells the focus component which
+  image to show.  When the focus image is clicked, it navigates to a URL route for an image-modal that shows a large version
+  of the artwork which is passed as state along with the index in the artworks list.
+
+Image Carousel
+manages a list of artworks displayed as a set of thumbnails with arrows to go left or right into the list.  Clicking a thumbnail
+emits an event so that the image focus component will show that artwork above in the center.
+
+Image focus
+
+properties:
+   artwork: the artwork object that is selected within the carousel
+
+If the focus image is clicked, it navigates to a URL that is an image modal component that takes over the whole browser.
+It does this so that the URL can be bookmarked.  The trick with this was getting the X button in the modal to return to the
+place the user was on.  There are two scenarios: 1.  User was in the app on a image-carousel and clicked the focus image 2) User
+came to the website from a URL to a specific image.   In 1, the router state includes the lastURL the user was on and the
+index of the image that was selected.  On closing the modal we can then navigate back to this URL and set the index so that it sets the focus image
+correctly (it doesn't correctly scroll the carousel to where it would need to be for a thumbnail that's not on screen but
+thats a minor issue). In 2, closing the modal navigates to the home page "" route.
+
+
+Image modal
+
+properties:
+   artwork:  the currently selected artwork
+   open: flag
+
+
