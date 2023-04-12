@@ -53,10 +53,10 @@ https://cloud.mongodb.com/v2/615490640c90e4261e121d89#clusters
 
 Login is thru my google account.
 
-The main.py file is hardwired with the connection to this db:
+The main.py file gets a connection URI to the db on mongo atlas (found within my serve.sh script inside the dmart-api or within the mongo cloud 
+website)
 
-`CONNECTION_STRING="mongodb+srv://marshall62:t0mand3rs@dm-art-cluster.6xsvm.mongodb.net/test?authSource=admin&replicaSet=atlas-10ss2z-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true"
-`
+
 
 Note:  This is a free hobby account with a limit of 500 MB of data.  Upgrade will move to the tier of $5 /month
 
