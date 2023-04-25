@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
-import { map, tap, filter } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { globalConfig } from '../config'
 import { HttpClient } from '@angular/common/http';
 import { Artwork } from '../models/artwork';
 import { environment } from '../../environments/environment';
+import { defer, from } from 'rxjs';
+import { MongoAtlasService } from '../mongo-atlas.service';
 
 // Gets the artworks
 
@@ -15,7 +17,7 @@ import { environment } from '../../environments/environment';
 export class ArtworkService {
   private _searchResults: any[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dbSvc: MongoAtlasService) { }
 
   public set searchResults (results) {
     this._searchResults = results;
@@ -62,11 +64,19 @@ export class ArtworkService {
     )
   }
 
+  // getHomeArtwork2 (): Observable<Artwork> {
+  //   return this.http.get(environment.apiUrl + "/works/tag/home").pipe(
+  //     map((works:any[]) => works.find(work => work.isActive)),
+  //     map(work => new Artwork(work)),
+  //     tap(console.log)
+  //   )
+  // }
+
   getHomeArtwork (): Observable<Artwork> {
-    return this.http.get(environment.apiUrl + "/works/tag/home").pipe(
-      map((works:any[]) => works.find(work => work.isActive)),
-      map(work => new Artwork(work))
-    )
+    console.log("db is ",this.dbSvc);
+    console.log("artworks is ",this.dbSvc.artworks);
+    return defer(() => from(this.dbSvc.artworks.findOne({ tags: "home" })
+      .then(aw => new Artwork(aw)))) as Observable<Artwork>;
   }
 
   searchArtworks (searchTerm: string): Observable<Artwork[]> {

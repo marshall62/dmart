@@ -2,9 +2,9 @@
 
 ### More instructions on Fast API backend in /api/docs/instructions.MD ###
 
+- cd dmart-api
 - source venv/bin/activate
-- cd api
-- uvicorn main:app --reload
+- source ./serve.sh 
 
 Note: The Atlas db can go down and after restart it takes a few minutes before the app can connect to it.
 
@@ -24,7 +24,7 @@ If encounter problems,  try uvicorn min_api:app --reload to see that the / URL r
 
 ## Angular Front-end app
 
-- be in the root dir of project
+- be in the root dir of project (dmart)
 - ng serve
 - App will be running on [localhost:4200]()
 
@@ -55,9 +55,6 @@ Login is thru my google account.
 
 The main.py file is hardwired with the connection to this db:
 
-`CONNECTION_STRING="mongodb+srv://marshall62:t0mand3rs@dm-art-cluster.6xsvm.mongodb.net/test?authSource=admin&replicaSet=atlas-10ss2z-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true"
-`
-
 Note:  This is a free hobby account with a limit of 500 MB of data.  Upgrade will move to the tier of $5 /month
 
 After a long pause, the db for dmart was shut down.  I had to go to https://cloud.mongodb.com/v2/615490640c90e4261e121d89#clusters and restart it.
@@ -73,6 +70,8 @@ root of the image dir is.
 
 
 ## Heroku
+
+### Note that I have a 2-Factor app (Google Authenticator) on my phone that generates a token necessary for login to Heroku 
 
 Hosts both the Angular and FastAPI elements.   Releases are mediated through github.
 

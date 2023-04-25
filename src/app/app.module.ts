@@ -18,10 +18,20 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Observable } from 'rxjs';
 import { Config } from './models/config';
 import { AppInitService } from './app-init.service';
+import * as Realm from "realm-web";
+import { MongoAtlasService } from './mongo-atlas.service';
+// import { initializeFirebase } from './firebase-init';
 
+export let realmApp; // The API to Mongo Atlas
 // runs once when the app bootstraps.  Sets up the config.
 function initializeApp(initSvc: AppInitService): () => Observable<Config> {
-  return initSvc.Init();
+  // let {api, db} = initializeFirebase();
+  // console.log("Firebase initialized", db);
+  const id = "dm-art-api-jznsb";
+  const config = {id,};
+  realmApp = new Realm.App(config);
+  console.log(`The realm app is `, realmApp);
+  return initSvc.init();
 }
 
 @NgModule({
@@ -47,6 +57,7 @@ function initializeApp(initSvc: AppInitService): () => Observable<Config> {
     ArtworkService,
     ImageService,
     ConfigService,
+    MongoAtlasService,
     AppInitService,
     {
       provide: APP_INITIALIZER,
