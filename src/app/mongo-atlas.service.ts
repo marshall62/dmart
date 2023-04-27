@@ -9,6 +9,7 @@ export class MongoAtlasService {
 
   mongodb: any;
   artworks: any;
+  config: any;
   realmApp: any;
 
   constructor() {
@@ -30,6 +31,7 @@ export class MongoAtlasService {
       console.log("Successfully logged in!", user.id);
       this.mongodb = this.realmApp.currentUser.mongoClient("mongodb-atlas");
       this.artworks = this.mongodb.db("artworks").collection("works");
+      this.config = this.mongodb.db("artworks").collection("config");
       console.log("artworks",this.artworks);
     } catch (err) {
       console.error("Failed to log in", err.message);     
