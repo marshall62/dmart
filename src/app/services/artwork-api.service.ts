@@ -4,6 +4,7 @@ import { Artwork } from '../models/artwork';
 import { environment } from '../../environments/environment';
 import { globalConfig } from '../config'
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
