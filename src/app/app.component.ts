@@ -8,15 +8,18 @@ import { Config } from './models/config';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
 
   artist;
   imageRootURI;
   bgColor;
 
-  constructor (private configSvc: ConfigService) {}
+  constructor () {}
 
   ngOnInit(): void {
+    this.artist = globalConfig.artist;
+
   }
 
 
