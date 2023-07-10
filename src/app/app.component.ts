@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   constructor (private configSvc: ConfigService) {}
 
   ngOnInit(): void {
+    this.artist = globalConfig.artist;
   }
 
 
